@@ -15,4 +15,7 @@ fortifyTranslate addJVMOptions: '', buildID: 'DevSecOps_Test', excludeList: '', 
 stage('Fortify Scan'){
 fortifyScan addJVMOptions: '', addOptions: '', buildID: 'DevSecOps_Test', customRulepacks: '', logFile: '', maxHeap: '', resultsFile: 'DevSecOps_Test'
 }
+stage('Snyk'){
+snykSecurity failOnIssues: true, organisation: '7b201d71-72ff-439e-a7cf-d7f0c43a3646', snykInstallation: 'SnykPluginTest', snykTokenId: 'DevSecOps_SnykTest'
+}
 }
