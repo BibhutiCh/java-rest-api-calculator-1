@@ -1,0 +1,18 @@
+node{
+stage('Fortify Checkout'){
+checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '38351142-a128-475b-990c-69ad5e61ed6e', url: 'https://github.com/BibhutiCh/java-rest-api-calculator-1.git']]])
+}
+        
+    
+stage('Fortify Clean'){
+fortifyClean addJVMOptions: '', buildID: 'DevSecOps_Test', logFile: '', maxHeap: ''
+}
+
+stage('Fortify Translate'){
+fortifyTranslate addJVMOptions: '', buildID: 'DevSecOps_Test', excludeList: '', logFile: '', maxHeap: '', projectScanType: fortifyJava(javaAddOptions: '', javaClasspath: '', javaSrcFiles: '*', javaVersion: '8')
+}
+
+stage('Fortify Scan'){
+fortifyScan addJVMOptions: '', addOptions: '', buildID: 'DevSecOps_Test', customRulepacks: '', logFile: '', maxHeap: '', resultsFile: 'DevSecOps_Test'
+}
+}
