@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Clone sources') {
             steps {
-               git 'https://github.com/BibhutiCh/mvnwebapp.git'
+               git 'https://github.com/BibhutiCh/java-rest-api-calculator-1.git'
             }
         }
         stage('SonarQube analysis') {
             steps{
-                withSonarQubeEnv(credentialsId: '	Sonaeqube-Token', installationName: 'SonarQubeServer'){
+                withSonarQubeEnv(credentialsId:'Sonaeqube-Token', installationName:'SonarQubeServer'){
                 sh 'mvn org.sonarsource.scanner.maven:SonarQubeScanner-9.3:sonar'
                 }
             }
