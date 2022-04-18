@@ -7,11 +7,7 @@ pipeline {
                git 'https://github.com/BibhutiCh/java-rest-api-calculator-1.git'
             }
         }
-        stage('Build') {
-            steps {
-               bat 'mvn clean package'
-            }
-        }
+  
         stage('SonarQube analysis') {
             steps{
                 withSonarQubeEnv(credentialsId:'Sonaeqube-Token', installationName:'SonarQubeServer'){
